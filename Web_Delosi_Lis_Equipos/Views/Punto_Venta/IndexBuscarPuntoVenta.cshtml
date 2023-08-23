@@ -1,0 +1,431 @@
+﻿@model IEnumerable<Web_Delosi_Lis_Equipos.Models.Punto_de_Venta>
+@{
+    ViewBag.Title = "IndexBuscarPuntoVenta";
+}
+
+
+<h2 class="text-center">Busqueda de Punto de Venta</h2>
+<br />
+<hr />
+<p>
+    @Html.ActionLink("Nuevo", "CreatePuntoVenta", null, new { @class = "btn btn-primary" })
+</p>
+<div>
+    @using (Html.BeginForm())
+    {
+        <em class="text-center">Ingresa el nombre de la tienda</em>
+        @Html.TextBox("nombre", "")
+        <button class="btn btn-success">Consultar</button>
+    }
+</div>
+<br />
+<div>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead class="text-center">
+            <tr>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.nom_empresa_ws)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.comp_tienda_ws)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.num_tienda_ws)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.nomb_tienda_ws)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.ip_ws)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.estado_tienda)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.modelo)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.status_ws)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.join_tienda)
+                </th>
+                <th style='background-color: #337ab7'></th>
+            </tr>
+        </thead>
+
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom_empresa_ws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comp_tienda_ws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_tienda_ws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomb_tienda_ws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ip_ws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado_tienda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status_ws)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.join_tienda)
+                </td>
+                <td>
+                    @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.join_tienda }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<!--Generar Ingresar nuevo punto de Venta-->
+<div class="modal fade" id="id_div_modal_registra">
+    <div class="modal-dialog" style="width:60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                    <span class="glyphicon glyphicon-ok-sign"></span>
+                    Registro de Punto de Venta
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-group" id="steps">
+                    <div class="panel panel-default">
+                        <div id="stepOne" class="panel-collapse collapse in">
+                            <form id="id_form_registra">
+                                <input type="hidden" name="metodo" value="inserta">
+                                <div class="panel-body">
+                                    <!-- 1.- Mombre de la Empresa-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_nom_empresa_ws">Nombre de la Empresa</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_comp_tienda_ws"
+                                                   name="nom_empresa_ws" placeholder="Ingrese el nombre de la Empresa" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 2.- Tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_comp_tienda_ws">Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_comp_tienda_ws"
+                                                   name="comp_tienda_ws" placeholder="Ingrese la tienda Tienda" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 3.- Número de tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_num_tienda_ws">Númpero de Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_num_tienda_ws"
+                                                   name="num_tienda_ws" placeholder="Ingrese el número de Tienda" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 4.- Nombre de la tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_nomb_tienda_ws">Nombre de la Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_nomb_tienda_ws"
+                                                   name="nomb_tienda_ws" placeholder="Ingrese el nombre de la Tienda" type="text"
+                                                   maxlength="100" />
+                                        </div>
+                                    </div>
+                                    <!-- 5.- IP_WS-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_ip_ws">IP WS</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_ip_ws"
+                                                   name="ip_ws" placeholder="Ingresar la IP" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 6.- Estado de la Tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_estado_tienda">Estado de Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_estado_tienda"
+                                                   name="estado_tienda" placeholder="Ingrese el Estado de la Tienda" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 7.- Modelo de la tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_modelo">Modelo</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_modelo"
+                                                   name="modelo" placeholder="Ingrese el Tipo de Modelo" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 8.- Status WS-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_status_ws">Status WS</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_status_ws"
+                                                   name="status_ws" placeholder="Ingrese el Status WS" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 9.- Join Tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_join_tienda">Join Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_join_tienda"
+                                                   name="join_tienda" placeholder="Ingrese el Join Tienda" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-12" align="center">
+                                            <!--Boton Registrar-->
+                                            <button type="button" style="width: 80px"
+                                                    id="id_btn_registra" class="btn btn-primary btn-sm">
+                                                Registrar
+                                            </button>
+                                            <!--Boton Cancelar-->
+                                            <button type="button" style="width: 80px"
+                                                    id="id_btn_reg_cancelar" class="btn btn-primary btn-sm"
+                                                    data-dismiss="modal">
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal Actualizar-->
+<div class="modal fade" id="id_div_modal_actualiza">
+    <div class="modal-dialog" style="width: 60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>
+                    <span class="glyphicon glyphicon-ok-sign"></span>
+                    Actualiza Los Punto
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-group" id="steps">
+                    <div class="panel panel-default">
+                        <div id="stepOne" class="panel-collapse collapse in">
+                            <form id="id_form_actualiza">
+                                <input type="hidden" name="metodo" value="actualiza">
+                                <input type="hidden" name="idPuntoVenta" id="idPuntoVenta">
+                                <div class="panel-body">
+                                    <!-- 1.- Mombre de la Empresa-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_nom_empresa_ws">Nombre de la Empresa</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_nom_empresa_ws"
+                                                   name="nom_empresa_ws" placeholder="Ingrese el Nombre de la Empres" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 2.- Tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_comp_tienda_ws">Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_comp_tienda_ws"
+                                                   name="comp_tienda_ws" placeholder="Ingresa la tienda" type="text"
+                                                   maxlength="11" />
+                                        </div>
+                                    </div>
+                                    <!-- 3.- Número de tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_num_tienda_ws">Número de la Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_num_tienda_ws"
+                                                   name="num_tienda_ws" placeholder="Ingrese el número de la tienda" type="text" maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 4.- Nombre de la tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_nomb_tienda_ws">Nombre de la Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_nomb_tienda_ws"
+                                                   name="nomb_tienda_ws" placeholder="Ingrese el Nombre de la Tienda" type="text" maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 5.- IP_WS-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_ip_ws">IP WS</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_ip_ws"
+                                                   name="ip_ws" placeholder="Ingrese la IP" type="text" maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 6.- Estado de la Tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_estado_tienda">Contacto</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_estado_tienda"
+                                                   name="estado_tienda" placeholder="Igresar el estado de al tienda" type="text" maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 7.- Modelo de la tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_act_modelo">Modelo</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_act_modelo"
+                                                   name="modelo" placeholder="Ingrese el Modelo" type="text" maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 8.- Status WS-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_status_ws">Status WS</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_status_ws"
+                                                   name="status_ws" placeholder="Ingrese el Status WS" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!-- 9.- Join Tienda-->
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" for="id_reg_join_tienda">Join Tienda</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control" id="id_reg_join_tienda"
+                                                   name="join_tienda" placeholder="Ingrese el Join Tienda" type="text"
+                                                   maxlength="30" />
+                                        </div>
+                                    </div>
+                                    <!---->
+                                    <div class="form-group">
+                                        <div class="col-lg-12" align="center">
+                                            <!--Actualizar-->
+                                            <button type="button" style="width: 80px"
+                                                    id="id_btn_actualiza" class="btn btn-primary btn-sm">
+                                                Actualiza
+                                            </button>
+                                            <!--Cancelar-->
+                                            <button type="button" style="width: 80px"
+                                                    id="id_btn_act_cancelar" class="btn btn-primary btn-sm"
+                                                    data-dismiss="modal">
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document)
+        .ready(
+            function () {
+                $('#id_form_registra')
+                    .bootstrapValidator(
+                        {
+                            message: 'This value is not valid',
+                            feedbackIcons: {
+                                valid: 'glyphicon glyphicon-ok',
+                                invalid: 'glyphicon glyphicon-remove',
+                                validating: 'glyphicon glyphicon-refresh'
+                            },
+
+                            fields: {
+                                razonsocial: {
+                                    selector: "#id_reg_razonsocial",
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'La Razón social es requerida'
+                                        },
+                                        stringLength: {
+                                            min: 3,
+                                            max: 30,
+                                            message: 'La Razón tiene de 3 a 30 caracteres'
+                                        },
+                                    }
+                                },
+                                ruc: {
+                                    selector: "#id_reg_ruc",
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'El Ruc es requerido'
+                                        },
+                                        regexp: {
+                                            regexp: /^[0-9]{11}$/,
+                                            message: 'El Ruc tiene 11 Dígitos'
+                                        },
+                                    }
+                                },
+                                direccion: {
+                                    selector: "#id_reg_direccion",
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'La dirección es requerido'
+                                        },
+                                        stringLength: {
+                                            max: 30,
+                                            message: 'La direccion es requerida'
+                                        }
+                                    }
+                                },
+                                celular: {
+                                    selector: "#id_reg_celular",
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'El número de celular es requerido'
+                                        },
+                                        regexp: {
+                                            regexp: /^[0-9]{9}$/,
+                                            message: 'El telefono tiene 9 digitos'
+                                        }
+                                    }
+                                },
+                                contacto: {
+                                    selector: "#id_reg_contacto",
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'Ingresar el Contacto'
+                                        },
+                                        stringLength: {
+                                            max: 30,
+                                            message: 'La direccion es requerida'
+                                        }
+                                    }
+                                },
+                                pais: {
+                                    selector: "#id_reg_pais",
+                                    validators: {
+                                        notEmpty: {
+                                            message: 'El pais es requerida'
+                                        },
+                                    }
+                                }
+                            }
+                        });
+            });
+
+
+</script>

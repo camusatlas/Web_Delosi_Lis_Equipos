@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Web_Delosi_Lis_Equipos.Models.Equipos_KDS>
+
+@{
+    ViewBag.Title = "IndexBuscarKDS";
+}
+
+<h2 class="text-center">Busqueda de KDS</h2>
+<br />
+<hr />
+<p>
+    @Html.ActionLink("Nuevo", "CreateKDS", null, new { @class = "btn btn-primary" })
+</p>
+<div>
+    @using (Html.BeginForm())
+    {
+        <em class="text-center">Ingresa el nombre de la tienda</em>
+        @Html.TextBox("nombre", "")
+        <button class="btn btn-success">Consultar</button>
+    }
+</div>
+<br />
+<div class="row">
+    <table class="table table-bordered table-hover table-condensed">
+        <thead class="text-center">
+            <tr>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.nom_empresa_kds)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.comp_tienda_kds)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.num_tienda_kds)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.nomb_tienda_kds)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.ip_kds)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.hostname)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.estado_tienda)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.modelo)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.status_kds)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.join_tienda)
+                </th>
+                <th style='background-color: #337ab7'></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom_empresa_kds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comp_tienda_kds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.num_tienda_kds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomb_tienda_kds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ip_kds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hostname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado_tienda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status_kds)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.join_tienda)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

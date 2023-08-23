@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Web_Delosi_Lis_Equipos.Models.Servidores>
+
+@{
+    ViewBag.Title = "IndexBuscarServidor3";
+}
+
+<h2 class="text-center">Datos de la Tienda</h2>
+<br />
+<hr />
+<p>
+    @Html.ActionLink("Nuevo", "CreateServidor", null, new { @class = "btn btn-primary" })
+</p>
+<div>
+    @using (Html.BeginForm())
+    {
+        <em class="text-center">Ingresa el nombre de la tienda</em>
+        @Html.TextBox("nombre", "")
+        <button class="btn btn-success">Consultar</button>
+    }
+</div>
+<br />
+<div class="row">
+    <table class="table table-bordered table-hover table-condensed">
+        <thead class="text-center">
+            <tr>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.telefono_tienda)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.direccion_tienda)
+                </th>
+                <th style='background-color: #337ab7'>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th style='background-color: #337ab7'></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono_tienda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion_tienda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
